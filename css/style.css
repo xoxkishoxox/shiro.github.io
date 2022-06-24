@@ -1,0 +1,429 @@
+/* common */
+body{
+  margin: 0;
+}
+
+h1,
+p,
+h2{
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  margin: 0;
+  padding: 0;
+  vertical-align: bottom;
+}
+
+h1,h2{
+  font-weight: normal;
+}
+
+ul,li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  width: calc(100% - 40px);
+  /* outline: 2px solid red; */
+  margin: 0 auto;
+  position: relative;
+  max-width: 960px;
+}
+
+/* Header */
+/* 1.For flex used header_nav.
+2.Logo(h1) and label make flex
+make space between and set up position relative for move inside of header box(header_nav)
+3.make humberger menu by using span
+4.in order to open the menu, use input and label to make relation each others
+5.I had already set up relative on "header_nav" so use absolute on .menu-btn in label to give a position inside of header
+6. to .menu-btn set up width and height for react by touching background (64 x 32)
+7.use ::before and ::after for making same line with span and set up absolute for moving them
+8.moving them to right positions
+9.However span will be stay at left0 nad top0 of menu-btn's box so add displey:flex; to use justify-contents and align contents to bring middle center*/
+.header {
+  background-image: url(../img/header.png);
+  width: 100%;
+  height: 620px;
+  background-size: cover;
+  background-color: skyblue;
+  padding-top: 40px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+header img{
+  width: 100%;
+  height: 620px;
+  object-fit: cover;
+}
+
+header h2,p,h1{
+  color: #fff;
+}
+
+header h2{
+  font-size: 36px;
+  padding-left: 8px;
+}
+
+header .header_nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  /* border: 1px dashed #FFFFFF; */
+  background-color:rgba(167, 164, 164, 0.3);
+  opacity: 1;
+  height: 64px;
+}
+
+/* check box position */
+#menu-btn-check{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  display: none;
+}
+
+/* burger */
+
+.menu-btn{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+}
+
+.menu-btn span,
+.menu-btn span::after,
+.menu-btn span::before{
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: #ffffff;
+  display: block;
+  position: absolute;
+  transition: transform .8s;
+}
+
+.menu-btn span::after{
+  bottom: 8px;
+}
+
+.menu-btn span::before{
+  top: 8px;
+}
+
+/* after click burger */
+
+input[type=checkbox]:checked ~ .menu-btn span{
+  background-color: rgba(225, 225, 225, 0);
+}
+
+input[type=checkbox]:checked ~ .menu-btn span::before{
+  top: 0;
+  transform:rotate(-45deg);
+}
+
+input[type=checkbox]:checked ~ .menu-btn span::after{
+  bottom: 0;
+  transform: rotate(45deg);
+}
+
+input[type=checkbox]:checked ~ .menu-btn span,
+input[type=checkbox]:checked ~ .menu-btn span::before,
+input[type=checkbox]:checked ~ .menu-btn span::after{
+  transition: transform .8s;
+}
+
+/* Header title and sub */
+.header_title{
+  font-size: 120px;
+  text-align: center;
+  margin-top: 136px;
+}
+
+.subtitle{
+  font-size: 16px;
+  font-family: Hiragino Kaku Gothic ProN,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
+.subtitle::before{
+  content:"- " ;
+}
+
+.subtitle::after{
+  content:" -" ;
+}
+
+/* Section Common */
+section h1,p,h2{
+  color:#2B2B2B ;
+}
+
+section h1{
+  font-weight: bold;
+  font-size: 36px;
+  font-family: poppins, Arial, sans-serif;
+  text-align: center;
+}
+
+section hr{
+  margin: 24px auto 32px;
+}
+
+section p{
+  font-size: 16px;
+  text-align: center;
+  line-height:1.4;
+  width: 100%;
+  /* height: 70px; */
+  margin: 0 auto;
+}
+
+section{
+  margin-top: 80px;
+}
+
+/* Concept */
+
+.concept img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  z-index: 20;
+  position: absolute;
+  /* display: block; */
+}
+
+.concept .pic{
+  height: 488px;
+  /* outline: 1px skyblue solid; */
+  margin-top: 80px;
+}
+
+.concept .box{
+  width: 100%;
+  height: 240px;
+  background-color:   #EDEDED;
+  position: absolute;
+  top: 1240px;
+  z-index: 10;
+}
+
+/* work */
+
+/* gallery */
+
+.work_gallery ul li{
+  display: inline-block;
+  /* outline: solid skyblue 1px; */
+  width: calc((100% - 80px)/2);
+}
+
+.work_gallery ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* outline: 1px blue solid; */
+  height: 1700px;
+  align-content: space-between;
+}
+
+.work_gallery img{
+  width: 100%;
+}
+
+.work_gallery{
+  margin-top: 40px;
+}
+
+.work_gallery li h1{
+  font-size: 24px;
+  margin-top: 16px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.work_gallery li p{
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.work_gallery ul li:nth-child(odd){
+  margin-bottom: 80px;
+}
+
+.work_gallery ul li:nth-child(2){
+  margin-bottom: 200px;
+}
+
+.work_gallery ul li:nth-child(3){
+  margin-top: 120px;
+}
+
+.work_gallery ul li:nth-child(4){
+  margin-bottom: 100px;
+}
+
+/* florist */
+.member img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.member ul{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.member li{
+  width: calc((100% - 60px)/3);
+}
+
+.member h2{
+  font-size: 24px;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 12px;
+  line-height: 1.66;
+}
+
+.member p{
+  text-align: left;
+}
+
+.florist .box{
+  width: 100%;
+  height: 374px;
+  background-color:   #EDEDED;
+  position: absolute;
+  top: -80px;
+  z-index: 10;
+}
+
+.florist {
+  position: relative;
+}
+
+.florist .head_florist,
+.member{
+  position: relative;
+  z-index: 100;
+}
+
+/* shop information */
+.information img{
+  width: calc((100% - 48px)/2);
+  height: 320px;
+  object-fit: cover;
+}
+
+.information{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 120px;
+}
+
+.adress {
+  display: flex;
+}
+
+.adress h2{
+  font-size: 16px;
+  width: 32px;
+}
+
+.information td+td {
+  border-left: 1px solid #A0A0A0;
+  padding: 0 0 19px 16px;
+}
+
+.shopinformation_table{
+  border-spacing: 16px;
+  text-align: left;
+  letter-spacing: 1.5px;
+}
+
+tbody{
+  vertical-align:top;
+}
+
+/* contact */
+/* .btn{
+  width: 360px;
+  height: 80px;
+  text-align: center;
+  align-items: center;
+  color: #2B2B2B;
+  font-size: 20px;
+  background: #FFFFFF;
+  border:#A0A0A0 1px solid ;
+ margin: 0 auto;
+} */
+.btn{
+  width: 360px;
+  height: 80px;
+  color: #2B2B2B;
+  font-size: 24px;
+  background: #FFFFFF;
+  border:#A0A0A0 1px solid ;
+  display:flex;
+  margin: 40px auto;
+  cursor: pointer;
+  font-family: Myriad pro sans-serif;
+  align-items: center;
+  
+}
+
+.btn:hover{
+  background-color: #EDEDED;
+
+}
+
+.contact{
+  background-image: url(../img/contact_us.png);
+  width: 100%;
+  height: 450px;
+  background-size: cover;
+  padding-top: 80px;
+}
+
+.contact i{
+  font-size: 32px;
+  /* text-align: center; */
+  margin-left: 79px;
+  margin-right: 24px;
+}
+
+footer small{
+  font-size: 16px;
+}
+
+footer{
+  height: 40px;
+  text-align: center;
+  padding-top: 12px;
+}
+
+/* Mobile */
+@media (min-width:599px) and (max-width:799px){
+  body{
+    background-color: pink;
+  }
+}
